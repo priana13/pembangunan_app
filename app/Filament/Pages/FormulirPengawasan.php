@@ -3,6 +3,7 @@
 namespace App\Filament\Pages;
 
 use App\Models\Kategori;
+use App\Models\Pengawasan;
 use App\Models\Proyek;
 use Filament\Pages\Page;
 
@@ -20,6 +21,10 @@ class FormulirPengawasan extends Page
 
     public $petugas;
 
+    public $proyek_id;
+
+    public $kategori_id;
+
     public function mount(){
 
         $this->list_proyek = Proyek::get();
@@ -28,6 +33,18 @@ class FormulirPengawasan extends Page
 
         $this->petugas = auth()->user()->name;
        
+    }
+
+    public function buat(){
+
+        
+        Pengawasan::create([
+            'proyek_id' => $this->proyek_id,
+            'tanggal' => now(),
+            'kategori_id' => $this->kategori_id,
+            'user_id' => auth()->user()->id 
+        ]);
+
     }
 
 }

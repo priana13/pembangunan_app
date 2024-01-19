@@ -21,6 +21,24 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('bismillah')
         ]);
 
+
+        \App\Models\JenisProyek::create([
+            'nama' => "Masjid"
+        ]);
+
+
+        \App\Models\Proyek::create([
+            'nama' => "Masjid Annur",
+            'alamat' => "Bogor", 
+            'jenis_proyek_id' => 1,
+
+        ]);
+
+        \App\Models\Kategori::create([
+            'nama' => "Pembuatan Pondasi"        
+            
+        ]);
+
         
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SurveyResource\Pages;
-use App\Filament\Resources\SurveyResource\RelationManagers;
-use App\Models\Survey;
+use App\Filament\Resources\PengawasanResource\Pages;
+use App\Filament\Resources\PengawasanResource\RelationManagers;
+use App\Models\Pengawasan;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,13 +13,13 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SurveyResource extends Resource
+class PengawasanResource extends Resource
 {
-    protected static ?string $model = Survey::class;
+    protected static ?string $model = Pengawasan::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Survey';
+    protected static ?string $navigationLabel = 'Pengawasan';
 
     public static function form(Form $form): Form
     {
@@ -88,9 +88,9 @@ class SurveyResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSurveys::route('/'),
-            'create' => Pages\CreateSurvey::route('/create'),
-            'edit' => Pages\EditSurvey::route('/{record}/edit'),
+            'index' => Pages\ListPengawasans::route('/'),
+            'create' => Pages\CreatePengawasan::route('/create'),
+            'edit' => Pages\EditPengawasan::route('/{record}/edit'),
         ];
     }
 }

@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('survey', function (Blueprint $table) {
+        Schema::create('item_pengawasan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('proyek_id');
-            $table->date('tanggal');
+            $table->unsignedBigInteger('sub_kategori_id');
+            $table->unsignedBigInteger('kategori_id');
+            $table->unsignedBigInteger('pengawasan_id');
+
             $table->unsignedBigInteger('user_id');
+
+            $table->string('ket'); // S , SC , PB
             $table->text('catatan')->nullable();
-            $table->string('status', 50)->default('Aktif'); // Dijadwalkan , Aktif, Selesai
+
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('survey');
+        Schema::dropIfExists('item_pengawasan');
     }
 };

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Survey extends Model
+class Pengawasan extends Model
 {
     use HasFactory;
 
-    protected $table = "survey";
+    protected $table = "pengawasan";
 
     protected $guarded = [];
 
@@ -23,9 +23,9 @@ class Survey extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function survey_item(){
+    public function item_pengawasan(){
 
-        return $this->hasMany(SurveyItem::class, 'survey_id');
+        return $this->hasMany(ItemPengawasan::class, 'pengawasan_id');
     }
 
 }
