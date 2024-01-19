@@ -10,6 +10,8 @@ class ListSubKategoris extends ListRecords
 {
     protected static string $resource = SubKategoriResource::class;
 
+    protected static ?string $title = "Sub Kategori Pekerjaan";
+
     protected function getHeaderActions(): array
     {
         return [

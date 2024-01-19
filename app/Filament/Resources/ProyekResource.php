@@ -30,9 +30,8 @@ class ProyekResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('alamat')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('jenis_proyek_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('jenis_proyek_id')->relationship('jenis_proyek', 'nama')
+                    ->required(),
             ]);
     }
 
@@ -44,7 +43,7 @@ class ProyekResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('alamat')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('jenis_proyek_id')
+                Tables\Columns\TextColumn::make('jenis_proyek.nama')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -80,8 +79,8 @@ class ProyekResource extends Resource
     {
         return [
             'index' => Pages\ListProyeks::route('/'),
-            'create' => Pages\CreateProyek::route('/create'),
-            'edit' => Pages\EditProyek::route('/{record}/edit'),
+            // 'create' => Pages\CreateProyek::route('/create'),
+            // 'edit' => Pages\EditProyek::route('/{record}/edit'),
         ];
     }
 }

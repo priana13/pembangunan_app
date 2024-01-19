@@ -10,10 +10,12 @@ class ListProyeks extends ListRecords
 {
     protected static string $resource = ProyekResource::class;
 
+    protected static ?string $title = "Proyek";
+
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()->label("Tambah Baru"),
         ];
     }
 }

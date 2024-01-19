@@ -25,14 +25,12 @@ class SurveyResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('proyek_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\DatePicker::make('tanggal')
+                Forms\Components\Select::make('proyek_id')->relationship('proyek', 'nama')->searchable()->preload()
                     ->required(),
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\DatePicker::make('tanggal')->default(now())
+                    ->required(),
+                Forms\Components\Select::make('user_id')->relationship('user', 'name')
+                    ->required(),
                 Forms\Components\Textarea::make('catatan')
                     ->maxLength(65535)
                     ->columnSpanFull(),
@@ -47,13 +45,13 @@ class SurveyResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('proyek_id')
+                Tables\Columns\TextColumn::make('proyek.nama')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('tanggal')
                     ->date()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('user_id')
+                Tables\Columns\TextColumn::make('user.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')

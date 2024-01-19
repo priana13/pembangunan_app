@@ -80,8 +80,8 @@ class KategoriResource extends Resource
     {
         return [
             'index' => ListKategoris::route('/'),
-            // 'create' => Pages\CreateKategori::route('/create'),
-            // 'edit' => Pages\EditKategori::route('/{record}/edit'),
+            'create' => Pages\CreateKategori::route('/create'),
+            'edit' => Pages\EditKategori::route('/{record}/edit'),
         ];
     }
 }
