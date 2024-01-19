@@ -18,11 +18,15 @@ class FormulirPengawasan extends Page
 
     public $list_kategori;
 
+    public $petugas;
+
     public function mount(){
 
         $this->list_proyek = Proyek::get();
 
         $this->list_kategori = Kategori::get();
+
+        $this->petugas = auth()->user()->name;
        
     }
 
