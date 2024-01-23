@@ -38,12 +38,14 @@ class FormulirPengawasan extends Page
     public function buat(){
 
         
-        Pengawasan::create([
+        $pegawasan = Pengawasan::create([
             'proyek_id' => $this->proyek_id,
             'tanggal' => now(),
             'kategori_id' => $this->kategori_id,
             'user_id' => auth()->user()->id 
         ]);
+
+        return redirect()->route('filament.admin.resources.pengawasans.formulir' , $pegawasan->id);
 
     }
 
