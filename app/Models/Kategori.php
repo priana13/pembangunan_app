@@ -13,4 +13,10 @@ class Kategori extends Model
 
     protected $guarded = [];
 
+
+    public function sub_kategori(){
+
+        return $this->hasMany(SubKategori::class, 'kategori_id');
+    }
+
 }

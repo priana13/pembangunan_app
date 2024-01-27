@@ -30,9 +30,8 @@ class SubKategoriResource extends Resource
                 Forms\Components\TextInput::make('nama_sub')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('kategori_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('kategori_id')->relationship('kategori', 'nama')
+                    ->required(),
                 Forms\Components\TextInput::make('urutan')
                     ->required()
                     ->numeric()
@@ -85,8 +84,8 @@ class SubKategoriResource extends Resource
     {
         return [
             'index' => Pages\ListSubKategoris::route('/'),
-            'create' => Pages\CreateSubKategori::route('/create'),
-            'edit' => Pages\EditSubKategori::route('/{record}/edit'),
+            // 'create' => Pages\CreateSubKategori::route('/create'),
+            // 'edit' => Pages\EditSubKategori::route('/{record}/edit'),
         ];
     }
 }

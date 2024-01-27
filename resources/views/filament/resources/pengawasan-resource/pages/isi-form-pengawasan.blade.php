@@ -10,6 +10,23 @@
     </div>
 
 
+   
+
+    <div class="card bg-white p-3 rounded">
+        <h2 class="text-2xl">Item Pemantauan Pembangunan</h2>  
+        
+       
+        @foreach( $sub_kategori as $item)
+
+        <livewire:forms.simple-item nomor="{{ $item->urutan }}" wire:key="test1" id="test1" judul="{{ $item->nama_sub }}" />
+
+        @endforeach
+
+       
+
+    </div>
+
+
 
 
 

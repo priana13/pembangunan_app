@@ -14,9 +14,15 @@ class IsiFormPengawasan extends Page
 
     public $record;
 
+    public $sub_kategori;
+
     public function mount(Pengawasan $record){
 
        $this->record = $record;
        
+       $this->sub_kategori = $record->kategori->sub_kategori;
+       
+
+
     }
 }
