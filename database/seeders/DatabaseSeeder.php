@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Kategori;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -34,9 +36,14 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        \App\Models\Kategori::create([
-            'nama' => "Pembuatan Pondasi"        
+        // \App\Models\Kategori::create([
+        //     'nama' => "Pembuatan Pondasi"        
             
+        // ]);
+
+        $this->call([
+            KategoriSeeder::class,
+            SubKategoriSeeder::class,
         ]);
 
         

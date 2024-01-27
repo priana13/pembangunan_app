@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_sub');
             $table->unsignedBigInteger('kategori_id');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->integer('urutan')->default(1);
             $table->timestamps();
         });

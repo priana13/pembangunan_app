@@ -45,7 +45,7 @@ class SubKategoriResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('nama_sub')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('kategori_id')
+                Tables\Columns\TextColumn::make('kategori.nama')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('urutan')
