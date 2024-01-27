@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('kategori_id');
             $table->date('tanggal');
             $table->unsignedBigInteger('user_id');
+            $table->string('pelaksana')->nullable();
             $table->text('catatan')->nullable();
             $table->string('status', 50)->default('Aktif'); // Dijadwalkan , Aktif, Selesai
             $table->timestamps();

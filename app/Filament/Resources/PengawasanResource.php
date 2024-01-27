@@ -21,6 +21,9 @@ class PengawasanResource extends Resource
 
     protected static ?string $navigationLabel = 'Pengawasan';
 
+    protected static ?int $navigationSort = 2;
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -31,12 +34,16 @@ class PengawasanResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('user_id')->relationship('user', 'name')
                     ->required(),
+                Forms\Components\TextInput::make('pelaksana'),
                 Forms\Components\Textarea::make('catatan')
                     ->maxLength(65535)
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('status')
+                Forms\Components\Select::make('status')
                     ->required()
-                    ->maxLength(50)
+                    ->options([
+                        "Aktif" => "Aktif", 
+                        "Selesai" => "Selesai"
+                    ])
                     ->default('Aktif'),
             ]);
     }
@@ -51,9 +58,10 @@ class PengawasanResource extends Resource
                 Tables\Columns\TextColumn::make('tanggal')
                     ->date()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('user.name')
+                Tables\Columns\TextColumn::make('user.name')->label("Petugas")
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('pelaksana'),
                 Tables\Columns\TextColumn::make('status')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
