@@ -23,11 +23,8 @@ class SubKategoriSeeder extends Seeder
                 $filePath = 'database/seeders/data/'.$kategori->nama.'.csv';   
                 
                 if( !file_exists($filePath) ){
-
                     continue;
-
                 }
-
 
                 $csvData = $this->readCsv($filePath);                
 
