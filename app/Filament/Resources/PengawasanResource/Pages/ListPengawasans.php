@@ -10,6 +10,8 @@ class ListPengawasans extends ListRecords
 {
     protected static string $resource = PengawasanResource::class;
 
+    protected static ?string $title = "Pengawasan";
+
     protected function getHeaderActions(): array
     {
         return [
