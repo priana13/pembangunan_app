@@ -15,17 +15,17 @@
     <div class="grid grid-cols-3 gap-3 mt-1 ms-5">
 
         <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-            <input wire:model.live="pilihan" id="pilihan-s-{{ $nomor }}" type="radio" value="s" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <input wire:model.live="pilihan" name="pilihan-s-{{ $nomor }}" id="pilihan-s-{{ $nomor }}" type="radio" value="s" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label for="pilihan-s-{{ $nomor }}" class="w-full py-2 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">S</label>
         </div>
 
         <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-            <input wire:model.live="pilihan"  id="pilihan-sc-{{ $nomor }}" type="radio" value="sc" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <input wire:model.live="pilihan" name="pilihan-sc-{{ $nomor }}"  id="pilihan-sc-{{ $nomor }}" type="radio" value="sc" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label for="pilihan-sc-{{ $nomor }}" class="w-full py-2 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">SC</label>
         </div>
 
         <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-            <input wire:model.live="pilihan"  id="pilihan-pb-{{ $nomor }}" type="radio" value="pb" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <input wire:model.live="pilihan"  name="pilihan-pb-{{ $nomor }}" id="pilihan-pb-{{ $nomor }}" type="radio" value="pb" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label for="pilihan-pb-{{ $nomor }}" class="w-full py-2 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">PB</label>
         </div>
 

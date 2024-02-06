@@ -25,4 +25,9 @@ class IsiFormPengawasan extends Page
 
 
     }
+
+    public function kirim_laporan(){
+
+        dd($this->record);
+    }
 }
