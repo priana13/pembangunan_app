@@ -52,12 +52,13 @@ class PengawasanResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('proyek.nama')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('tanggal')
                     ->date()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('proyek.nama')
+                    ->numeric()
+                    ->sortable(),                
+                Tables\Columns\TextColumn::make('kategori.nama'),                
                 Tables\Columns\TextColumn::make('user.name')->label("Petugas")
                     ->numeric()
                     ->sortable(),
@@ -77,7 +78,9 @@ class PengawasanResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->url(function($record){
+                    return route('filament.admin.resources.pengawasans.formulir', $record->id);
+                }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
