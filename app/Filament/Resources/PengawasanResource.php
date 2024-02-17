@@ -101,8 +101,7 @@ class PengawasanResource extends Resource
         return [
             'index' => Pages\ListPengawasans::route('/'),
             'create' => Pages\CreatePengawasan::route('/create'),
-            'edit' => Pages\EditPengawasan::route('/{record}/edit'),
-            'formulir' => Pages\IsiFormPengawasan::route('/{record}/formulir'),
+            'edit' => Pages\EditPengawasan::route('/{record}/edit'),            
         ];
     }
 }

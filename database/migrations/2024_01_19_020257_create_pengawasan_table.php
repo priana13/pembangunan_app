@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('pengawasan', function (Blueprint $table) {
             $table->id();
+            $table->string('kode'); // uniqid
             $table->unsignedBigInteger('proyek_id');
             $table->unsignedBigInteger('kategori_id');
             $table->date('tanggal');

@@ -66,7 +66,8 @@ class FormulirPengawasan extends Page
         
         $this->validate();
 
-        $pegawasan = Pengawasan::create([
+        $pengawasan = Pengawasan::create([
+            'kode' => uniqid(),
             'proyek_id' => $this->proyek_id,
             'tanggal' => now(),
             'kategori_id' => $this->kategori_id,
@@ -74,7 +75,7 @@ class FormulirPengawasan extends Page
             'pelaksana' => $this->pelaksana
         ]);
 
-        return redirect()->route('filament.admin.resources.pengawasans.formulir' , $pegawasan->id);
+        return redirect( route('filament.admin.pages.formulir-pengawasan-detail') . '?kodePengawasan=' . $pengawasan->kode );
 
     }
 
