@@ -63,7 +63,10 @@ class PengawasanResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('pelaksana'),
-                Tables\Columns\TextColumn::make('status')
+                Tables\Columns\BadgeColumn::make('status')->colors([
+                    'success' => "Terkirim",
+                    "warning" => "Aktif"
+                ])
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -79,7 +82,7 @@ class PengawasanResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()->url(function($record){
-                    return route('filament.admin.resources.pengawasans.formulir', $record->id);
+                    return route('filament.admin.pages.formulir-pengawasan-detail') . '?kodePengawasan=' . $record->kode;
                 }),
             ])
             ->bulkActions([

@@ -22,12 +22,12 @@
 
             @endforeach
 
-{{--         
+        
             <div class="text-end">
 
                 <button wire:click="kirim_laporan" type="button" class="text-white bg-blue-500 rounded-md shadow px-3 py-2">Kirim Laporan</button>
         
-            </div> --}}
+            </div>
 
 
         </div>

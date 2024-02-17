@@ -9,7 +9,9 @@ export default {
     "./resources/**/*.js",
     "./resources/**/*.vue",
     "./node_modules/flowbite/**/*.js",
-    './vendor/filament/**/*.blade.php'
+    './vendor/filament/**/*.blade.php',
+    './resources/views/filament/**/*.blade.php',
+    './app/Filament/**/*.php',
   ],
   theme: {
     extend: {},

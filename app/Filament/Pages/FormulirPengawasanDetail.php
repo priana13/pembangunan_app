@@ -36,7 +36,10 @@ class FormulirPengawasanDetail extends Page
  
      public function kirim_laporan(){
  
-         dd($this->record);
+         $this->record->status = "Terkirim";
+         $this->record->save();
+
+         return redirect()->route('filament.admin.resources.pengawasans.index');
      }
      
 }

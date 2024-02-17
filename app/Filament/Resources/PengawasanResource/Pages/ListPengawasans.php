@@ -15,7 +15,9 @@ class ListPengawasans extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()->url(function(){
+                return route('filament.admin.pages.formulir-pengawasan');
+            })->label("Tambah Baru"),
         ];
     }
 }

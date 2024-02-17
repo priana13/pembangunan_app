@@ -5,9 +5,12 @@ namespace App\Filament\Pages;
 use App\Models\Kategori;
 use App\Models\Pengawasan;
 use App\Models\Proyek;
+use Filament\Forms\Components\Select;
 use Filament\Pages\Page;
 use Livewire\Attributes\Validate;
 use Illuminate\Contracts\View\View;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
 
 class FormulirPengawasan extends Page
 {
@@ -61,6 +64,29 @@ class FormulirPengawasan extends Page
                 ...$this->getLayoutData(),
             ]);
     }
+
+
+    public function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+
+                Select::make('proyek_id')->options(function(){
+
+                    return Proyek::pluck('nama','id');
+                })->searchable()->label("Pilih Lokasi Proyek")->required(),
+
+                Select::make('kategori_id')->options(function(){
+
+                    return Kategori::pluck('nama','id');
+                })->searchable()->label("Pilih Lokasi Proyek")->required(),
+
+                TextInput::make('pelaksana')->required(),
+                TextInput::make('petugas')->required(),
+
+            ]);
+    }
+
 
     public function buat(){
         
