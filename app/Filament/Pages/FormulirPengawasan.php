@@ -51,18 +51,15 @@ class FormulirPengawasan extends Page
        
     }
 
-    public function render(): View
-    {       
+        /**
+     * @return array<string, mixed>
+     */
+    protected function getViewData(): array
+    {
 
-        ($this->proyek_id) ? $this->proyek = Proyek::find($this->proyek_id): null;       
+        ($this->proyek_id) ? $this->proyek = Proyek::find($this->proyek_id): null;
 
-
-        return view(static::$view, $this->getViewData())
-            ->layout(static::$layout, [
-                'livewire' => $this,
-                'maxContentWidth' => $this->getMaxContentWidth(),
-                ...$this->getLayoutData(),
-            ]);
+        return [];
     }
 
 
