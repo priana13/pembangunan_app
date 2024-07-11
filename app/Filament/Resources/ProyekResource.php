@@ -21,7 +21,6 @@ class ProyekResource extends Resource
 
     protected static ?string $navigationLabel = 'Proyek';
 
-    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -32,8 +31,40 @@ class ProyekResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('alamat')
                     ->maxLength(255),
-                Forms\Components\Select::make('jenis_proyek_id')->relationship('jenis_proyek', 'nama')
-                    ->required(),
+                Forms\Components\Select::make('jenis_proyek_id')->relationship(
+                    'jenis_proyek',
+                    'nama'
+                )->required(),
+                Forms\Components\TextInput::make('nama_donatur')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('nama_perantara')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('akad_donatur')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('nama_pelaksana')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('ukuran')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('luas')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('cp')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('koordinat')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('tahun')
+                    ->numeric(),
+                Forms\Components\Textarea::make('rincian')
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('keterangan')
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
+                Forms\Components\DatePicker::make('tanggal_mulai'),
+                Forms\Components\DatePicker::make('tanggal_selesai'),
+                Forms\Components\TextInput::make('bayan')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('status')
+                    ->maxLength(255),
             ]);
     }
 
@@ -56,6 +87,35 @@ class ProyekResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('nama_donatur')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('nama_perantara')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('akad_donatur')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('nama_pelaksana')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('ukuran')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('luas')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('cp')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('koordinat')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('tahun')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('tanggal_mulai')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('tanggal_selesai')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('bayan')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->searchable(),
             ])
             ->filters([
                 //
@@ -81,8 +141,8 @@ class ProyekResource extends Resource
     {
         return [
             'index' => Pages\ListProyeks::route('/'),
-            // 'create' => Pages\CreateProyek::route('/create'),
-            // 'edit' => Pages\EditProyek::route('/{record}/edit'),
+            'create' => Pages\CreateProyek::route('/create'),
+            'edit' => Pages\EditProyek::route('/{record}/edit'),
         ];
     }
 }
