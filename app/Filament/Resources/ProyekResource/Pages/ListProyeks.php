@@ -50,10 +50,15 @@ class ListProyeks extends ListRecords
                             "nama_perantara" => $data["nama_perantara"],
                             "nama_pelaksana" => $data["nama_pelaksana"],
                             "ukuran" => $data["ukuran"],
+                            "luas" => (isset($data["luas"])) ? $data["luas"] : "",
                             "cp" => $data["cp"],
                             "koordinat" => $data["koordinat"],
                             "tahun" => $data["tahun"],
-                            "nama" => $nama_masjid,
+                            "nama" => $nama_masjid,      
+                            "rincian" => (isset($data["rincian"])) ? $data["rincian"] : "",
+                            "tanggal_mulai" => $data["tanggal_mulai"],
+                            "tanggal_selesai" => $data["tanggal_selesai"],
+                            "bayan" => $data["bayan"]       
                            ]);
 
                     }
