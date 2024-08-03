@@ -103,8 +103,7 @@ class ProyekResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('koordinat')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('tahun')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('tahun')                   
                     ->sortable(),
                 Tables\Columns\TextColumn::make('tanggal_mulai')
                     ->date()
