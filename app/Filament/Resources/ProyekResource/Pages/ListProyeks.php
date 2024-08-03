@@ -6,6 +6,7 @@ use Filament\Actions;
 use Illuminate\Support\Collection;
 use Filament\Resources\Pages\ListRecords;
 use App\Filament\Resources\ProyekResource;
+use App\Filament\Resources\ProyekResource\Widgets\ProyekOverView;
 use App\Models\Proyek;
 
 class ListProyeks extends ListRecords
@@ -58,7 +59,8 @@ class ListProyeks extends ListRecords
                             "rincian" => (isset($data["rincian"])) ? $data["rincian"] : "",
                             "tanggal_mulai" => $data["tanggal_mulai"],
                             "tanggal_selesai" => $data["tanggal_selesai"],
-                            "bayan" => $data["bayan"]       
+                            "bayan" => $data["bayan"],
+                            "status" => "Selesai"     
                            ]);
 
                     }
@@ -72,6 +74,14 @@ class ListProyeks extends ListRecords
             })
             ,
             Actions\CreateAction::make()->label("Tambah"),
+        ];
+    }
+
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            ProyekOverView::class,
         ];
     }
 }

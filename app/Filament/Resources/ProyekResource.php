@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -63,8 +64,13 @@ class ProyekResource extends Resource
                 Forms\Components\DatePicker::make('tanggal_selesai'),
                 Forms\Components\TextInput::make('bayan')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('status')
-                    ->maxLength(255),
+                Forms\Components\Select::make('status')
+                    ->options([
+                        "Pengajuan" => "Pengajuan",
+                        "Survei" => "Survei",
+                        "Pembangunan" => "Pembangunan",
+                        "Selesai" => "Selesai"
+                    ]),
             ]);
     }
 
@@ -78,6 +84,8 @@ class ProyekResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('jenis_proyek.nama')
                     ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('tahun')                   
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -103,8 +111,7 @@ class ProyekResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('koordinat')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('tahun')                   
-                    ->sortable(),
+                
                 Tables\Columns\TextColumn::make('tanggal_mulai')
                     ->date()
                     ->sortable(),
@@ -117,7 +124,24 @@ class ProyekResource extends Resource
                     ->searchable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('jenis_proyek_id')->relationship('jenis_proyek', 'nama')->label("Jenis Proyek"),
+                SelectFilter::make('status')->options([
+                    "Pengajuan" => "Pengajuan",
+                    "Survei" => "Survei",
+                    "Pembangunan" => "Pembangunan",
+                    "Selesai" => "Selesai"
+                ]),
+                SelectFilter::make("tahun")->options(function() {
+
+                    $tahun = [];
+
+                    for ($i=2000; $i <= intval( date('Y') ); $i++) { 
+                        $tahun[$i] = $i;
+                    }
+
+                    return $tahun;
+
+                })->searchable()
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
