@@ -6,6 +6,7 @@ use App\Filament\Resources\ProyekResource\Pages;
 use App\Filament\Resources\ProyekResource\RelationManagers;
 use App\Models\Proyek;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -27,41 +28,48 @@ class ProyekResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('alamat')
-                    ->maxLength(255),
                 Forms\Components\Select::make('jenis_proyek_id')->relationship(
                     'jenis_proyek',
                     'nama'
                 )->required(),
-                Forms\Components\TextInput::make('nama_donatur')
+                Fieldset::make("Data Proyek")->schema([
+                    Forms\Components\TextInput::make('nama')->label("Nama Masjid/ Ponpes/ Proyek")
+                        ->required()->columnSpan(3)
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('alamat')->maxLength(255)->columnSpan(3),
+                    Forms\Components\TextInput::make('ukuran')->maxLength(255),
+                    Forms\Components\TextInput::make('luas')->maxLength(255),
+                    Forms\Components\TextInput::make('cp')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('nama_perantara')
+                Forms\Components\TextInput::make('koordinat')->columnSpan(3)
                     ->maxLength(255),
-                Forms\Components\TextInput::make('akad_donatur')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('nama_pelaksana')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('ukuran')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('luas')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('cp')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('koordinat')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('tahun')
-                    ->numeric(),
                 Forms\Components\Textarea::make('rincian')
                     ->maxLength(65535)
                     ->columnSpanFull(),
+                ])->columns(6),     
+
+                Fieldset::make("Pelaksanaan")->schema([
+                    Forms\Components\TextInput::make('tahun')
+                    ->numeric(),
+                    Forms\Components\TextInput::make('nama_perantara')
+                    ->maxLength(255),
+                    Forms\Components\TextInput::make('nama_pelaksana')
+                    ->maxLength(255),
+                    Forms\Components\DatePicker::make('tanggal_mulai'),
+                    Forms\Components\DatePicker::make('tanggal_selesai'),
+
+                ])->columns(6),                
+               
+                Forms\Components\TextInput::make('nama_donatur')
+                    ->maxLength(255),
+                
+                Forms\Components\TextInput::make('akad_donatur')
+                    ->maxLength(255), 
+                               
                 Forms\Components\Textarea::make('keterangan')
                     ->maxLength(65535)
                     ->columnSpanFull(),
-                Forms\Components\DatePicker::make('tanggal_mulai'),
-                Forms\Components\DatePicker::make('tanggal_selesai'),
+               
                 Forms\Components\TextInput::make('bayan')
                     ->maxLength(255),
                 Forms\Components\Select::make('status')
