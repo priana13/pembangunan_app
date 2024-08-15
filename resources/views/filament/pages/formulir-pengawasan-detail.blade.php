@@ -13,12 +13,18 @@
     
 
         <div class="card bg-white p-3 rounded">
-            <h2 class="text-2xl">Item Pemantauan Pembangunan</h2>  
+            <h2 class="text-2xl">Item Pengawasan</h2>  
             
         
             @foreach( $sub_kategori as $item)
 
-            <livewire:forms.simple-item sub_kategori_id="{{ $item->id }}" wire:key="test{{ $item->id }}" id="test1" judul="{{ $item->nama_sub }}" />
+                <livewire:forms.simple-item 
+                    pengawasan="{{ $record->id }}"
+                    sub_kategori_id="{{ $item->id }}" 
+                    wire:key="test{{ $item->id }}" 
+                    id="test1" 
+                    judul="{{ $item->nama_sub }}" 
+                />
 
             @endforeach
 

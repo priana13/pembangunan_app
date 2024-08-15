@@ -43,9 +43,9 @@ class FormulirPengawasan extends Page
 
     public function mount(){
 
-        $this->list_proyek = Proyek::get();
+        // $this->list_proyek = Proyek::get();
 
-        $this->list_kategori = Kategori::get();
+        // $this->list_kategori = Kategori::get();
 
         $this->petugas = auth()->user()->name;
        
@@ -69,9 +69,21 @@ class FormulirPengawasan extends Page
             ->schema([
 
                 Select::make('proyek_id')->options(function(){
+                   
+                    $list_proyek = Proyek::get();  
 
-                    return Proyek::pluck('nama','id');
-                })->searchable()->label("Pilih Lokasi Proyek")->required(),
+                    $options = [];
+                    
+                    foreach ($list_proyek as $key => $proyek) {
+
+                        // dd($proyek);
+
+                       $options [$proyek->id] = $proyek->nama . ' - ' . $proyek->alamat; 
+                    }
+
+                    return $options;
+
+                })->searchable()->label("Pilih Lokasi Proyek")->required()->preload(),
 
                 Select::make('kategori_id')->options(function(){
 
