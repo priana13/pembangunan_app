@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -78,7 +79,11 @@ class PengawasanResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('proyek_id')->relationship('proyek', "nama" , function($query){
+
+                    return $query->whereHas('pengawasan');
+                })->label("Proyek"),
+                SelectFilter::make('kategori_id')->relationship('kategori', "nama")->label("Kategori"),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()->url(function($record){

@@ -18,4 +18,9 @@ class Proyek extends Model
         return $this->belongsTo(JenisProyek::class, 'jenis_proyek_id');
     }
 
+    public function pengawasan(){
+
+        return $this->hasMany(Pengawasan::class, 'proyek_id');
+    }
+
 }
