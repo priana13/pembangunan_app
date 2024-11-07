@@ -13,6 +13,7 @@ use App\Filament\Resources\KategoriResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\KategoriResource\RelationManagers;
 use App\Filament\Resources\KategoriResource\Pages\ListKategoris;
+use App\Filament\Resources\KategoriResource\RelationManagers\SubKategoriRelationManager;
 
 class KategoriResource extends Resource
 {
@@ -67,7 +68,7 @@ class KategoriResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            SubKategoriRelationManager::class,
         ];
     }
 
